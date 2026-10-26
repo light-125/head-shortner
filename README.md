@@ -26,7 +26,7 @@ Add these 2 lines inside `<head>` or at the beginning of `<body>`.
 #### Using local or npm path / ローカルまたはnpmパスを使用する場合:
 ```html
 <script type="shorthead">{"fav":"<link rel=\"icon\" href=\"/favicon.ico\">","og":"<meta property=\"og:title\" content=\"Web Site\">"}</script>
-<script src="node_modules/short-head/dist/short-head.js" defer></script>
+<script src="node_modules/short-head/dist/short-head.min.js" defer></script>
 ```
 
 #### Using CDN / CDNを使用する場合:
