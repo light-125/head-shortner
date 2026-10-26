@@ -5,21 +5,37 @@ A 2-line JSON-driven `<head>` element injection tool optimized with `DocumentFra
 
 ---
 
+## Installation / インストール
+
+### npm
+```bash
+npm i short-head
+```
+
+### CDN (jsDelivr)
+[https://cdn.jsdelivr.net/gh/light-125/head-shortner@main/dist/short-head.min.js](https://cdn.jsdelivr.net/gh/light-125/head-shortner@main/dist/short-head.min.js)
+
+---
+
 ## Usage / 使い方
 
 ### 1. HTML Configuration / HTML側の設定
 Add these 2 lines inside `<head>` or at the beginning of `<body>`.
 `<head>` 内、または `<body>` の先頭に以下の2行を配置します。
 
+#### Using local or npm path / ローカルまたはnpmパスを使用する場合:
 ```html
 <script type="shorthead">{"fav":"<link rel=\"icon\" href=\"/favicon.ico\">","og":"<meta property=\"og:title\" content=\"Web Site\">"}</script>
-<script src="head-loader.js" defer></script>
+<script src="node_modules/short-head/dist/short-head.js" defer></script>
 ```
 
-### 2. Loader Script (`head-loader.js`) / ローダー本体
-Save this code as `head-loader.js`. It safely parses JSON and batch-injects nodes at $\mathcal{O}(N)$ complexity to minimize browser reflow.
-以下を `head-loader.js` として保存します。`DocumentFragment` による一括挿入で描画負荷を最小化します。
+#### Using CDN / CDNを使用する場合:
+```html
+<script type="shorthead">{"fav":"<link rel=\"icon\" href=\"/favicon.ico\">","og":"<meta property=\"og:title\" content=\"Web Site\">"}</script>
+<script src="https://cdn.jsdelivr.net/gh/light-125/head-shortner@main/dist/short-head.min.js" defer></script>
+```
 
+### 2. Source Code (`dist/short-head.js`) / ソースコード
 ```javascript
 (function () {
   try {
@@ -40,9 +56,6 @@ Save this code as `head-loader.js`. It safely parses JSON and batch-injects node
 ---
 
 ## Data Schema / データ構造
-The JSON input maps unique keys to valid HTML string fragments.
-JSONは一意のキーと有効なHTML文字列のペアで構成します。
-
 ```json
 {
   "theme": "<meta name=\"theme-color\" content=\"#000000\">",
@@ -53,5 +66,4 @@ JSONは一意のキーと有効なHTML文字列のペアで構成します。
 ---
 
 ## License / ライセンス
-This project is open-source. See [LICENSE](LICENSE) for terms.
-詳細は [LICENSE](LICENSE) を参照してください。
+See [LICENSE](LICENSE) for terms. / 詳細は [LICENSE](LICENSE) を参照。
